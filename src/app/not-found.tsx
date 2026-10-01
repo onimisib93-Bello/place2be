@@ -7,7 +7,7 @@ export default function NotFound() {
     <section className="band-night relative grid min-h-[100svh] place-items-center overflow-hidden">
       <div aria-hidden data-word="404" className="ghost-word display pointer-events-none absolute select-none text-[42vw] leading-none text-marble/[0.04]" />
       <div className="container-x relative text-center">
-        <h1 className="display text-[clamp(3rem,8vw,6.5rem)]">This page took a swim.</h1>
+        <h1 className="display text-[clamp(3rem,8vw,6.5rem)]">This room doesn&apos;t exist.</h1>
         <p className="mx-auto mt-6 max-w-md text-lg text-marble/70">
           The link may be old or mistyped. Head back to the home page, or go straight to booking.
         </p>

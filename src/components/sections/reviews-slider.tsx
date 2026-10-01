@@ -67,6 +67,7 @@ export function ReviewsSlider() {
               exit="exit"
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="cursor-grab touch-pan-y active:cursor-grabbing"
+              data-cursor="Drag"
               aria-roledescription="slide"
               aria-label={`Review ${index + 1} of ${reviews.length}`}
             >

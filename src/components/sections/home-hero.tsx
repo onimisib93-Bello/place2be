@@ -13,93 +13,108 @@ import { FilmDialog } from "@/components/sections/film-dialog";
 import { VapourWords } from "@/components/sections/vapour-words";
 import { video } from "@/content/media";
 
+const PORTRAIT = "(max-aspect-ratio: 4/5)";
+
+/**
+ * Full-bleed video hero. The building and balcony, then the pool, play edge to edge;
+ * the headline sits on a graded overlay. On scroll the video drifts and zooms slowly
+ * while the copy lifts away, so the next section appears to slide over it.
+ */
 export function HomeHero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const [filmOpen, setFilmOpen] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
+  const mediaY = useTransform(scrollYProgress, [0, 1], ["0%", "35%"]);
+  const mediaScale = useTransform(scrollYProgress, [0, 1], [1.04, 1.18]);
+  const copyY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const copyOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
-    <section ref={ref} className="band-night relative isolate overflow-hidden">
-      {/* Ambient pool light */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(60% 50% at 78% 38%, rgba(60,198,208,0.16), transparent 70%), radial-gradient(40% 40% at 10% 90%, rgba(199,162,87,0.08), transparent 70%)",
-        }}
-      />
-      <div className="container-x grid min-h-[100svh] grid-cols-1 items-center gap-12 pb-12 pt-28 lg:grid-cols-12 lg:gap-8 lg:pb-16 lg:pt-32">
-        <div className="lg:col-span-7">
-          <p className="fade-up mb-6 text-marble/70" style={{ animationDelay: "var(--intro)" }}>
-            Place2Be Hotel &amp; Suites, Ipaja Road, Lagos
-          </p>
-          <RevealText
-            as="h1"
-            immediate
-            delay={0.05}
-            className="display text-[clamp(3.2rem,9vw,8.5rem)]"
-            lines={["A calm hideout", "in the city."]}
-          />
-          <div className="mt-4 flex items-center gap-4 sm:mt-6">
-            <span className="shrink-0 text-marble/60 max-sm:text-sm">Come to</span>
-            <VapourWords words={["swim.", "unwind.", "dine.", "stay."]} ratio={0.13} min={40} max={88} className="max-w-[28rem]" />
+    <section ref={ref} className="relative isolate h-[100svh] min-h-[40rem] overflow-hidden bg-abyss text-marble" aria-label="Welcome">
+      {/* Media layer */}
+      <motion.div className="absolute inset-0 -z-20" style={reduce ? undefined : { y: mediaY, scale: mediaScale }}>
+        {/* Poster paints first (LCP) and stays under the video until it plays */}
+        <picture>
+          <source media={PORTRAIT} srcSet={video.hero.tallPoster} />
+          <img src={video.hero.widePoster} alt="" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
+        </picture>
+        <video
+          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[1.2s]"
+          style={{ opacity: playing ? 1 : 0 }}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          onPlaying={() => setPlaying(true)}
+          aria-hidden
+        >
+          <source src={video.hero.tallWebm} type="video/webm" media={PORTRAIT} />
+          <source src={video.hero.tall} type="video/mp4" media={PORTRAIT} />
+          <source src={video.hero.wideWebm} type="video/webm" />
+          <source src={video.hero.wide} type="video/mp4" />
+        </video>
+      </motion.div>
+
+      {/* Grade: keeps text legible and softens the low-resolution source */}
+      <div aria-hidden className="grain absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,31,34,0.6)_0%,rgba(7,31,34,0.25)_30%,rgba(7,31,34,0.45)_60%,rgba(7,31,34,0.94)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,31,34,0.75)_0%,rgba(7,31,34,0.35)_45%,transparent_75%)]" />
+      </div>
+
+      <motion.div
+        className="container-x flex h-full flex-col justify-end pb-6 pt-28 md:pb-10"
+        style={reduce ? undefined : { y: copyY, opacity: copyOpacity }}
+      >
+        <div className="grid items-end gap-8 lg:grid-cols-12">
+          <div className="lg:col-span-8">
+            <p className="fade-up mb-5 text-marble/80" style={{ animationDelay: "var(--intro)" }}>
+              Place2Be Hotel &amp; Suites, Ipaja Road, Lagos
+            </p>
+            <RevealText
+              as="h1"
+              immediate
+              delay={0.05}
+              className="display text-[clamp(3.1rem,8.6vw,8.75rem)] drop-shadow-[0_2px_30px_rgba(0,0,0,0.25)]"
+              lines={["A hotel made", "for rest."]}
+            />
+            <div className="fade-up mt-3 flex items-center gap-4" style={{ animationDelay: "calc(var(--intro) + 0.3s)" }}>
+              <span className="shrink-0 text-marble/75 max-sm:text-sm">Here to</span>
+              <VapourWords words={["rest.", "work.", "celebrate.", "unwind."]} ratio={0.12} min={38} max={80} className="max-w-[30rem]" />
+            </div>
           </div>
-          <div className="fade-up mt-10 flex flex-wrap items-center gap-3" style={{ animationDelay: "calc(var(--intro) + 0.4s)" }}>
+          <div className="fade-up flex flex-wrap items-center gap-3 lg:col-span-4 lg:justify-end" style={{ animationDelay: "calc(var(--intro) + 0.45s)" }}>
             <Magnetic>
               <Button asChild size="lg">
                 <Link href="/book">Book direct</Link>
               </Button>
             </Magnetic>
-            <Button asChild size="lg" variant="outlineLight">
-              <Link href="/rooms">See the rooms</Link>
-            </Button>
-          </div>
-        </div>
-
-        <motion.div
-          className="relative mx-auto w-full max-w-[24rem] lg:col-span-5 lg:mr-0"
-          style={reduce ? undefined : { y: videoY, scale: videoScale }}
-        >
-          <div
-            className="reveal-clip grain relative aspect-[9/14] overflow-hidden rounded-[2px] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.7)]"
-            style={{ animationDelay: "calc(var(--intro) - 0.15s)" }}
-          >
-            <video
-              className="absolute inset-0 h-full w-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              poster={video.poolLoop.poster}
-              aria-label="The Place2Be pool, the hotel's name tiled into its floor"
-            >
-              <source src={video.poolLoop.webm} type="video/webm" />
-              <source src={video.poolLoop.mp4} type="video/mp4" />
-            </video>
-            <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-abyss/70 via-transparent to-transparent" />
             <button
               type="button"
               onClick={() => setFilmOpen(true)}
-              className="group absolute bottom-4 left-4 flex cursor-pointer items-center gap-3 rounded-full bg-marble/10 py-2 pl-2 pr-4 text-sm text-marble backdrop-blur-md transition-colors hover:bg-marble/20"
+              className="group flex h-14 cursor-pointer items-center gap-3 rounded-full border border-marble/30 py-2 pl-2 pr-5 text-[0.95rem] backdrop-blur-sm transition-colors hover:border-marble/70"
             >
-              <span className="grid size-9 place-items-center rounded-full bg-gold text-abyss transition-transform group-hover:scale-110">
+              <span className="grid size-10 place-items-center rounded-full bg-marble text-abyss transition-transform duration-300 group-hover:scale-110">
                 <Play className="size-4 translate-x-px fill-current" aria-hidden />
               </span>
-              Watch the 35-second tour
+              Watch the tour
             </button>
           </div>
-          <p className="mt-3 text-right text-sm text-marble/50">The pool has our name on its floor.</p>
-        </motion.div>
+        </div>
 
-        <div className="fade-up lg:col-span-12" style={{ animationDelay: "calc(var(--intro) + 0.6s)" }}>
+        <div className="fade-up mt-8 md:mt-10" style={{ animationDelay: "calc(var(--intro) + 0.6s)" }}>
           <QuickBook />
         </div>
-      </div>
+
+        <div aria-hidden className="mt-6 hidden items-center justify-center gap-3 text-sm text-marble/60 md:flex">
+          <span className="relative block h-9 w-px overflow-hidden bg-marble/20">
+            <span className="scroll-cue absolute inset-x-0 top-0 h-1/2 bg-gold" />
+          </span>
+          Scroll to explore
+        </div>
+      </motion.div>
       <FilmDialog open={filmOpen} onOpenChange={setFilmOpen} />
     </section>
   );

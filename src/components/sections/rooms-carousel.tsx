@@ -40,9 +40,9 @@ export function RoomsCarousel() {
     <section className="band-night overflow-hidden py-24 md:py-36" aria-label="Rooms and suites">
       <div className="container-x flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div>
-          <RevealText className="display text-[clamp(2.4rem,5.5vw,4.75rem)]" lines={["Four ways", "to stay."]} />
+          <RevealText className="display text-[clamp(2.4rem,5.5vw,4.75rem)]" lines={["Rooms &", "suites."]} />
           <p className="mt-6 max-w-md text-lg text-marble/70">
-            From a quiet single for one night to the Royale for a weekend worth remembering.
+            Four room types, from a quiet single for a one-night stop to the Royale for a weekend worth remembering. Breakfast is included with all of them.
           </p>
         </div>
         <div className="flex items-center gap-3">
@@ -59,6 +59,7 @@ export function RoomsCarousel() {
       <div
         ref={track}
         tabIndex={0}
+        data-cursor="Drag"
         role="region"
         aria-label="Room slider, use arrow keys to move"
         onScroll={update}

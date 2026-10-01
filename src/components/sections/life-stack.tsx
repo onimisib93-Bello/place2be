@@ -83,8 +83,8 @@ export function LifeStack() {
     <StackSpread
       ariaLabel="Life at Place2Be"
       cards={cards}
-      headline={"Swim by day.\nStay for the music."}
-      subtitle="The pool, the lounge and your room are all a short walk from each other."
+      headline={"Check in.\nSlow down."}
+      subtitle="Your room, the restaurant, the lounge and the pool, all inside one gated compound."
       headlineClassName="display"
       bgColor="var(--marble)"
       textColor="#17201e"

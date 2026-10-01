@@ -7,26 +7,16 @@ import { BookCta } from "@/components/sections/book-cta";
 import { media } from "@/content/media";
 
 export const metadata: Metadata = {
-  title: "Experiences",
+  title: "Facilities",
   description:
-    "Outdoor pool and poolside lounge, fitness centre, laundry, local shuttle and a 24-hour front desk at Place2Be Hotel & Suites, Lagos.",
+    "24-hour front desk, fitness centre, laundry, local shuttle, outdoor pool and lounge at Place2Be Hotel & Suites, Ipaja Road, Lagos.",
 };
 
 const chapters: StoryChapter[] = [
   {
-    title: "The pool",
-    body: "Clean, clear water in front of a black-marble water feature, with our name tiled into the floor. Not too big, and as one guest put it, definitely worth a swim.",
-    image: media.poolWaterfall,
-  },
-  {
-    title: "The lounge",
-    body: "Loungers along the wall, turf underfoot and music in the evening. This is where guests unwind after a long day.",
-    image: media.poolGuests,
-  },
-  {
-    title: "The balcony",
-    body: "Look down over the water from the upper balcony, with seating for a quiet drink or a phone call away from the room.",
-    image: media.balcony,
+    title: "Around the clock",
+    body: "The front desk is open 24 hours, so you can check in late, ask for anything and get help at any hour. Security watches the compound day and night.",
+    image: media.reception,
   },
   {
     title: "Fitness centre",
@@ -34,9 +24,19 @@ const chapters: StoryChapter[] = [
     image: media.gym,
   },
   {
-    title: "Around the clock",
-    body: "A 24-hour front desk, full-service laundry and a local shuttle the front desk can arrange. Security watches the compound day and night.",
-    image: media.reception,
+    title: "Laundry & shuttle",
+    body: "Full-service laundry, washed, pressed and returned to your room, and a local shuttle the front desk can arrange.",
+    image: media.facadeBalcony,
+  },
+  {
+    title: "The pool",
+    body: "An outdoor pool for guests, in front of a black-marble water feature with our name tiled into the floor. Not too big, and as one guest put it, definitely worth a swim.",
+    image: media.poolWaterfall,
+  },
+  {
+    title: "Lounge & balcony",
+    body: "Loungers by the water, music in the evening, and balcony seating upstairs for a quiet drink or a phone call away from the room.",
+    image: media.balcony,
   },
 ];
 
@@ -44,14 +44,14 @@ export default function ExperiencesPage() {
   return (
     <>
       <PageHero
-        kicker="Experiences"
-        lines={["Days by the water,", "nights with music."]}
-        intro="The pool is the heart of Place2Be. Around it you'll find the lounge, the balcony, the gym and a front desk that never closes."
-        image={media.poolAerial}
+        kicker="Hotel facilities"
+        lines={["More than", "a room."]}
+        intro="Everything around your room is there to make the stay easier: a front desk that never closes, a fitness centre, laundry, a shuttle, and an outdoor pool and lounge for guests."
+        image={media.reception}
       />
       <StickyStory chapters={chapters} />
       <AmenitiesGrid />
-      <BookCta lines={["The water's", "waiting."]} image={media.poolLetters} />
+      <BookCta lines={["Your room", "is waiting."]} image={media.poolLetters} />
     </>
   );
 }

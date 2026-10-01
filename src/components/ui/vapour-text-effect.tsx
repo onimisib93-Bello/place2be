@@ -101,7 +101,7 @@ export default function VaporizeTextCycle({
   // Calculate device pixel ratio (capped: particle count grows with its square)
   const globalDpr = useMemo(() => {
     if (typeof window !== "undefined") {
-      return Math.min((window.devicePixelRatio || 1) * 1.5, 2.5);
+      return Math.min((window.devicePixelRatio || 1) * 1.5, 2);
     }
     return 1;
   }, []);

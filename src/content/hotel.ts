@@ -6,7 +6,7 @@
 export const hotel = {
   name: "Place2Be Hotel and Suites",
   shortName: "Place2Be",
-  tagline: "A calm hideout on Ipaja Road",
+  tagline: "Hotel and suites on Ipaja Road, Lagos",
   address: {
     street: "Moshalashi Roundabout, Ipaja Rd",
     area: "Alimosho",
@@ -26,11 +26,8 @@ export const hotel = {
     instagram: "https://instagram.com/", // TODO: add real handle
     facebook: "https://facebook.com/", // TODO: add real page
   },
-  geo: { lat: 6.6136, lng: 3.2669 }, // TODO: confirm exact coordinates
-  mapEmbed:
-    "https://www.google.com/maps?q=Place2be+Hotel+and+Suites,+Ipaja+Rd,+Alimosho,+Lagos&output=embed",
-  mapLink:
-    "https://www.google.com/maps/search/?api=1&query=Place2be+Hotel+and+Suites+Ipaja+Road+Lagos",
+  geo: { lat: 6.6098338, lng: 3.2642852 }, // from the hotel's Google listing
+  mapLink: "https://www.google.com/maps/dir/?api=1&destination=6.6098338,3.2642852",
   checkIn: "2:00 pm", // TODO: confirm
   checkOut: "12:00 noon", // TODO: confirm
   policies: [
@@ -59,16 +56,16 @@ export type AmenityKey =
   | "security";
 
 export const amenities: { key: AmenityKey; title: string; detail: string }[] = [
-  { key: "pool", title: "Outdoor pool", detail: "Clean, calm, with music and a lounge beside it." },
-  { key: "breakfast", title: "Breakfast, free", detail: "Served every morning, included with your room." },
-  { key: "parking", title: "Parking, free", detail: "A large compound with room for plenty of cars." },
-  { key: "wifi", title: "Wi-Fi, free", detail: "Across the rooms and public spaces." },
+  { key: "frontDesk", title: "24-hour front desk", detail: "Check in late, ask early. Someone is always on duty." },
+  { key: "breakfast", title: "Breakfast, free", detail: "Served every morning and included with every room." },
+  { key: "wifi", title: "Wi-Fi, free", detail: "In every room and across the hotel." },
+  { key: "parking", title: "Parking, free", detail: "A large gated compound with space for plenty of cars." },
+  { key: "roomService", title: "Room service", detail: "Meals brought to your room, day or night." },
+  { key: "restaurant", title: "Restaurant", detail: "Local and continental dishes, all day." },
+  { key: "bar", title: "Bar & lounge", detail: "Drinks, music and somewhere to unwind after the day." },
+  { key: "pool", title: "Outdoor pool", detail: "A clean, calm pool for guests, with loungers beside it." },
   { key: "fitness", title: "Fitness centre", detail: "Keep your routine while you're away." },
-  { key: "bar", title: "Bar & lounge", detail: "Good music and a view of the water." },
-  { key: "restaurant", title: "Restaurant", detail: "Local and continental plates, all day." },
-  { key: "roomService", title: "Room service", detail: "Dinner without leaving your room." },
-  { key: "frontDesk", title: "24-hour front desk", detail: "Someone is always awake to help." },
-  { key: "laundry", title: "Full-service laundry", detail: "Washed, pressed, returned to your room." },
+  { key: "laundry", title: "Full-service laundry", detail: "Washed, pressed and returned to your room." },
   { key: "shuttle", title: "Local shuttle", detail: "Ask the front desk to arrange a ride." },
   { key: "security", title: "Security", detail: "A gated compound watched day and night." },
 ];

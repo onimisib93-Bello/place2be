@@ -341,3 +341,77 @@ html.lenis body {
 .ghost-word::before {
   content: attr(data-word);
 }
+
+/* Hero scroll cue: a gold bead travelling down a hairline */
+.scroll-cue {
+  animation: scroll-cue 2.2s var(--ease-out-expo) infinite;
+}
+@keyframes scroll-cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+/* Leaflet map styling */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--abyss-2) !important;
+}
+.p2b-marker {
+  position: relative;
+}
+.p2b-marker-dot,
+.p2b-marker-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+}
+.p2b-marker-dot {
+  inset: 4px;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(7, 31, 34, 0.9);
+}
+.p2b-marker-pulse {
+  background: rgba(199, 162, 87, 0.45);
+  animation: p2b-pulse 2.2s ease-out infinite;
+}
+@keyframes p2b-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+.p2b-popup .leaflet-popup-content-wrapper,
+.p2b-popup .leaflet-popup-tip {
+  background: var(--marble);
+  color: var(--vein);
+  border-radius: 6px;
+}
+.p2b-popup a {
+  color: var(--turf);
+  text-decoration: underline;
+}
+.p2b-tooltip {
+  background: var(--abyss);
+  color: var(--marble);
+  border: 0;
+}
+.leaflet-control-zoom a {
+  background: var(--abyss) !important;
+  color: var(--marble) !important;
+  border-color: rgba(241, 242, 238, 0.15) !important;
+}
+.leaflet-control-attribution {
+  background: rgba(7, 31, 34, 0.7) !important;
+  color: rgba(241, 242, 238, 0.6) !important;
+}
+.leaflet-control-attribution a {
+  color: rgba(241, 242, 238, 0.8) !important;
+}

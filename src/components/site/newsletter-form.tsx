@@ -20,7 +20,7 @@ export function NewsletterForm() {
       className="flex flex-col gap-3"
     >
       <label htmlFor="newsletter-email" className="text-sm text-marble/60">
-        Offers and pool-night dates, once a month
+        Offers and news from the hotel, once a month
       </label>
       <div className="flex gap-2 border-b border-marble/30 focus-within:border-gold">
         <input

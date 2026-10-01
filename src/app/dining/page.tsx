@@ -52,7 +52,7 @@ export default function DiningPage() {
         body={
           <>
             <p>
-              The lounge sits right beside the pool. Guests talk about the &ldquo;good music and good view&rdquo;, and it&apos;s where most evenings end.
+              The bar and lounge sit beside the pool. Guests talk about the &ldquo;good music and good view&rdquo;, and it&apos;s where many evenings end.
             </p>
             <p>Order a drink from the bar, take a lounger, and stay as long as you like.</p>
           </>

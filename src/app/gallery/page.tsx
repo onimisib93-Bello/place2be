@@ -8,7 +8,7 @@ import { media } from "@/content/media";
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description: "Photos and a short video tour of Place2Be Hotel & Suites: the pool, lounge, rooms and property on Ipaja Road, Lagos.",
+  description: "Photos and a short video tour of Place2Be Hotel & Suites: the rooms, the building, the lounge and the pool on Ipaja Road, Lagos.",
 };
 
 export default function GalleryPage() {
@@ -17,7 +17,7 @@ export default function GalleryPage() {
       <PageHero
         kicker="Gallery"
         lines={["Have a look", "around."]}
-        intro="Every photo here was taken at Place2Be: the rooms, the pool, the lounge and the building on Ipaja Road."
+        intro="Every photo here was taken at Place2Be: the rooms, the reception, the building, the lounge and the pool."
       />
       <LifeStack />
       <GalleryGrid />

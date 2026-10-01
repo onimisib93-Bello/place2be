@@ -3,6 +3,7 @@ import { Clock, MapPin, MessageCircle, Phone } from "lucide-react";
 
 import { PageHero } from "@/components/sections/page-hero";
 import { ContactForm } from "@/components/sections/contact-form";
+import { HotelMap } from "@/components/sections/hotel-map";
 import { hotel, whatsappLink } from "@/content/hotel";
 
 export const metadata: Metadata = {
@@ -57,15 +58,10 @@ export default function ContactPage() {
 
           <div className="mt-16 grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-lg ring-1 ring-vein/10 lg:aspect-auto lg:h-full lg:min-h-[32rem]">
-                <iframe
-                  title="Map showing Place2Be Hotel and Suites on Ipaja Road"
-                  src={hotel.mapEmbed}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="absolute inset-0 h-full w-full border-0 grayscale-[30%]"
-                />
-              </div>
+              <HotelMap className="aspect-[4/3] w-full lg:aspect-auto lg:h-full lg:min-h-[32rem]" />
+              <a href={hotel.mapLink} target="_blank" rel="noopener noreferrer" className="link-underline mt-4 inline-block text-vein/80">
+                Get directions in Google Maps
+              </a>
             </div>
             <div className="lg:col-span-5">
               <h2 className="display text-4xl">Getting here</h2>

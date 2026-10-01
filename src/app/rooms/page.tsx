@@ -16,7 +16,7 @@ export default function RoomsPage() {
     <>
       <PageHero
         kicker="Rooms & Suites"
-        lines={["Rest well,", "wake to the pool."]}
+        lines={["Rooms made", "for rest."]}
         intro="Four room types, each with air conditioning, free Wi-Fi and breakfast included. Pick the one that fits who you're travelling with."
         image={media.roomStandard}
       />

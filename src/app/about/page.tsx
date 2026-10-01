@@ -6,12 +6,14 @@ import { FeatureBlock } from "@/components/sections/feature-block";
 import { LocationBand } from "@/components/sections/location-band";
 import { BookCta } from "@/components/sections/book-cta";
 import { RevealText } from "@/components/motion/reveal-text";
+import { ScrollHighlight } from "@/components/motion/scroll-highlight";
+import { VelocityMarquee } from "@/components/motion/velocity-marquee";
 import { media } from "@/content/media";
 import { reviews } from "@/content/hotel";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Place2Be Hotel & Suites is a small, calm hotel built around its pool on Ipaja Road, Alimosho, Lagos.",
+  description: "Place2Be Hotel & Suites is a hotel on Ipaja Road, Alimosho, Lagos, known for clean rooms, helpful staff and an easy location.",
 };
 
 const values = [
@@ -25,7 +27,7 @@ const values = [
   },
   {
     title: "Room to breathe",
-    body: "A big gated compound, plenty of parking, and a calm pool away from the noise of the road.",
+    body: "A big gated compound with plenty of parking, set back from the noise of the road.",
   },
 ];
 
@@ -36,21 +38,31 @@ export default function AboutPage() {
         kicker="About Place2Be"
         lines={["A good hideout", "in the city."]}
         intro="That's how one guest described us, and we haven't found a better way to put it."
-        image={media.facadeSign}
+        image={media.exteriorPortrait}
       />
+
+      <section className="band-day py-24 md:py-36" aria-label="Our promise">
+        <div className="container-x">
+          <ScrollHighlight
+            as="h2"
+            className="display max-w-[22ch] text-[clamp(2.1rem,4.8vw,4.5rem)] leading-[1.08]"
+            text="A clean room, a good meal, a helpful face at the front desk at any hour, and a quiet night's sleep. That's the promise, every stay."
+          />
+        </div>
+      </section>
 
       {/* TODO: replace with the hotel's own story (founding year, owners, what the name means to them). */}
       <FeatureBlock
-        lines={["Built around", "the water."]}
-        image={media.poolLetters}
+        lines={["A hotel built", "for rest."]}
+        image={media.facadeSign}
         secondary={media.reception}
         body={
           <>
             <p>
-              Place2Be sits on Ipaja Road in Alimosho, close to Iyana-Ipaja. From the street it&apos;s a smart three-storey building. Step through the gate and the pool opens up in front of you, with our name tiled into its floor.
+              Place2Be Hotel &amp; Suites sits on Ipaja Road in Alimosho, close to Iyana-Ipaja: a smart three-storey building inside a large gated compound. Upstairs are the rooms and suites. Downstairs are the reception, the restaurant, the bar and lounge, and an outdoor pool with our name tiled into its floor.
             </p>
             <p>
-              We kept things simple: clean rooms, a pool worth swimming in, good food, music in the evening and staff who are glad to help.
+              We keep it simple: clean, comfortable rooms, good food, staff who are glad to help, and a calm place to rest at the end of the day.
             </p>
           </>
         }
@@ -92,6 +104,13 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="band-night py-8 md:py-10" aria-label="At the hotel">
+        <VelocityMarquee
+          baseVelocity={2}
+          className="display text-[clamp(2.5rem,6vw,5.5rem)] leading-none text-marble"
+          items={["Clean, always", "Help at any hour", "Room to breathe", "Ipaja Road, Lagos"]}
+        />
+      </section>
       <LocationBand />
       <BookCta />
     </>

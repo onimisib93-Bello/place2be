@@ -50,15 +50,19 @@ export const media = {
   diningTable: img(unsplash("photo-1414235077428-338989a2e8c0"), "Plated dishes served at the restaurant (illustrative)", 1400, 933, "stock", "/media/pool/pool-stage.jpg"),
   diningRoom: img(unsplash("photo-1517248135467-4c7edcad34c4"), "Restaurant interior in the evening (illustrative)", 1400, 933, "stock", "/media/property/reception.jpg"),
   cocktails: img(unsplash("photo-1514362545857-3bc16c4c7d1b"), "Cocktails at the bar (illustrative)", 1400, 933, "stock", "/media/pool/pool-poolside-guests.jpg"),
-  breakfast: img(unsplash("photo-1533089860892-a7c6f0a88666"), "Breakfast spread with fruit and coffee (illustrative)", 1400, 933, "stock", "/media/rooms/deluxe-gold-1.jpg"),
+  breakfast: img(unsplash("photo-1533089860892-a7c6f0a88666"), "Breakfast spread with fruit and coffee (illustrative)", 1400, 933, "stock", "/media/property/reception.jpg"),
   gym: img(unsplash("photo-1534438327276-14e5300c3a48"), "Fitness centre equipment (illustrative)", 1400, 933, "stock", "/media/property/balcony-lounge.jpg"),
 } satisfies Record<string, MediaImage>;
 
 export const video = {
-  poolLoop: {
-    mp4: "/media/video/pool-loop.mp4",
-    webm: "/media/video/pool-loop.webm",
-    poster: "/media/video/pool-loop-poster.jpg",
+  /** Full-bleed hero: the building and balcony, then the pool. Wide crop for landscape screens, tall for phones. */
+  hero: {
+    wide: "/media/video/hero-wide.mp4",
+    wideWebm: "/media/video/hero-wide.webm",
+    widePoster: "/media/video/hero-wide-poster.jpg",
+    tall: "/media/video/hero-tall.mp4",
+    tallWebm: "/media/video/hero-tall.webm",
+    tallPoster: "/media/video/hero-tall-poster.jpg",
   },
   film: {
     mp4: "/media/video/place2be-film.mp4",

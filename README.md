@@ -16,14 +16,20 @@ Deploy: push to GitHub and import the repo in Vercel (no settings needed). Set
 
 | Route | What's there |
 |---|---|
-| `/` | Hero with pool video and cycling particle text, GlyphPortal dive into the pool, amenities grid, room slider, StackSpread photo scatter, reviews slider, location, booking CTA |
+| `/` | Full-screen video hero with cycling particle text, GlyphPortal welcome, room slider, scroll-speed marquee, pinned horizontal "A day at Place2Be", amenities grid, expanding full-bleed image, word-by-word scroll statement, reviews slider, StackSpread photo scatter, hover-preview explore list, interactive map, booking CTA |
 | `/rooms`, `/rooms/[slug]` | Filterable room grid; room pages with gallery lightbox and a sticky booking card |
 | `/dining` | Restaurant, bar & lounge, breakfast, room service |
-| `/experiences` | Pinned scroll story (pool, lounge, balcony, gym, services) plus the full amenities list |
+| `/experiences` | Facilities: pinned scroll story (front desk, gym, laundry, pool, lounge) plus the full amenities list |
 | `/gallery` | StackSpread intro, filterable masonry grid, swipeable lightbox, video tour |
 | `/about` | Story, values, all guest reviews, location |
-| `/contact` | Contact options, map, directions, message form (sends via WhatsApp) |
+| `/contact` | Contact options, interactive map, directions, message form (sends via WhatsApp) |
 | `/book` | Three-step booking request that opens WhatsApp with the details filled in |
+
+## Map
+
+The map uses Leaflet with free CARTO basemap tiles (OpenStreetMap data, attribution shown). The marker uses the coordinates from the hotel's Google listing (`hotel.geo`). If tiles fail to load, the map shows a link to Google Maps instead.
+
+A custom cursor appears on mouse devices. Mark any element with `data-cursor="View"` (or any label) to show that label on hover.
 
 ## Where things live
 
@@ -45,7 +51,6 @@ The shadcn registry wasn't reachable from the build environment, so `components.
 - [ ] Bed sizes and the differences between Deluxe and Royale (`src/content/rooms.ts`)
 - [ ] Check-in and check-out times
 - [ ] Reservations email address, Instagram and Facebook links
-- [ ] Exact map coordinates (`hotel.geo`)
 - [ ] The hotel's own story for the About page (founding year, owners)
 - [ ] Is the pool with the brick wall and loungers (`pool-poolside-guests.jpg`, `pool-square.jpg`) the current pool, or an older photo?
 - [ ] Replace the illustrative stock photos (restaurant, breakfast, cocktails, gym) with real ones

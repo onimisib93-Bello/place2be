@@ -9,22 +9,23 @@ import { Footer } from "@/components/site/footer";
 import { WhatsAppFab } from "@/components/site/whatsapp-fab";
 import { OfferPopup } from "@/components/site/offer-popup";
 import { Preloader, preloaderScript } from "@/components/site/preloader";
+import { Cursor } from "@/components/site/cursor";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://place2behotel.com"; // TODO: set the live domain
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Place2Be Hotel & Suites | A calm hideout on Ipaja Road, Lagos",
+    default: "Place2Be Hotel & Suites | Hotel in Ipaja, Alimosho, Lagos",
     template: "%s | Place2Be Hotel & Suites",
   },
   description:
-    "Boutique hotel on Ipaja Road, Alimosho, Lagos. Outdoor pool and lounge, free breakfast, free parking and Wi-Fi, 24-hour front desk. Book direct for free cancellation.",
+    "Hotel and suites on Ipaja Road, Alimosho, Lagos. Comfortable rooms with free breakfast, Wi-Fi and parking, a restaurant and bar, 24-hour front desk and an outdoor pool. Book direct for free cancellation.",
   openGraph: {
     type: "website",
     siteName: hotel.name,
     locale: "en_NG",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "The Place2Be pool, the hotel's name tiled into the floor" }],
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Place2Be Hotel & Suites, Ipaja Road, Lagos" }],
   },
   twitter: { card: "summary_large_image" },
   icons: { icon: "/icon.svg" },
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Footer />
           <WhatsAppFab />
           <OfferPopup />
+          <Cursor />
         </SmoothScroll>
       </body>
     </html>

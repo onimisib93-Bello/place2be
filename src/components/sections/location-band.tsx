@@ -6,6 +6,7 @@ import { media } from "@/content/media";
 import { ParallaxImage } from "@/components/motion/parallax-image";
 import { RevealText } from "@/components/motion/reveal-text";
 import { Button } from "@/components/ui/button";
+import { HotelMap } from "./hotel-map";
 
 export function LocationBand() {
   return (
@@ -37,9 +38,14 @@ export function LocationBand() {
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-5 gap-4 md:col-span-6 lg:col-span-7">
-          <ParallaxImage image={media.exteriorStreet} className="col-span-3 aspect-[4/3] self-end rounded-[2px]" sizes="(min-width: 768px) 30vw, 60vw" />
-          <ParallaxImage image={media.exteriorPortrait} className="col-span-2 aspect-[9/16] rounded-[2px]" sizes="(min-width: 768px) 20vw, 40vw" />
+        <div className="relative md:col-span-6 lg:col-span-7">
+          <HotelMap className="aspect-[4/5] w-full sm:aspect-[4/3] md:aspect-[5/6] lg:aspect-[4/3]" />
+          <ParallaxImage
+            image={media.exteriorPortrait}
+            className="absolute -bottom-8 -left-6 hidden aspect-[9/14] w-[26%] rounded-[2px] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.6)] lg:block"
+            sizes="16vw"
+            strength={14}
+          />
         </div>
       </div>
     </section>

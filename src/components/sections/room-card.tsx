@@ -20,6 +20,7 @@ export function RoomCard({ room, tone = "dark", sizes = "(min-width: 1024px) 30v
       href={`/rooms/${room.slug}`}
       className={cn("group block focus-visible:outline-offset-4", className)}
       draggable={false}
+      data-cursor="View"
     >
       <div className="grain relative aspect-[4/5] overflow-hidden rounded-[2px]">
         <Image

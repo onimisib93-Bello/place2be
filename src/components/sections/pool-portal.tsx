@@ -11,27 +11,27 @@ import { media } from "@/content/media";
 const pillars = [
   {
     title: "Stay",
-    body: "Clean, quiet rooms with gold headboards, crisp linen and breakfast included. Kept spotless and regularly fumigated.",
+    body: "Four room types with gold headboards, crisp linen, air conditioning and breakfast included. Kept spotless and regularly fumigated.",
     href: "/rooms",
     cta: "See the rooms",
   },
   {
-    title: "Swim",
-    body: "An outdoor pool with a black-marble water feature, a turf lounge and music in the evening.",
-    href: "/experiences",
-    cta: "Explore the pool",
+    title: "Dine",
+    body: "A restaurant serving local and continental dishes, a bar and lounge, and room service whenever you want it.",
+    href: "/dining",
+    cta: "Restaurant & bar",
   },
   {
-    title: "Savour",
-    body: "A restaurant, a bar, room service, and breakfast every morning on the house.",
-    href: "/dining",
-    cta: "Eat and drink",
+    title: "Unwind",
+    body: "An outdoor pool for guests, a fitness centre, laundry and a local shuttle the front desk can arrange.",
+    href: "/experiences",
+    cta: "Hotel facilities",
   },
 ];
 
 /**
- * Signature moment: the camera dives through the word PLACE2BE into the pool,
- * whose floor carries the same word in tile.
+ * Signature moment: the camera travels through the word PLACE2BE into the hotel's
+ * pool, whose floor carries the same word in tile, then opens onto the hotel's story.
  */
 export function PoolPortal() {
   // Only the primary face: GlyphPortal goes static if any listed family isn't loaded,
@@ -62,7 +62,7 @@ export function PoolPortal() {
       fontWeight={900}
       scrollLength={2.6}
       interactive={false}
-      enterLabel="Dive in"
+      enterLabel="Step inside"
       background={background}
       className="pool-portal"
       style={{
@@ -74,18 +74,19 @@ export function PoolPortal() {
       }}
       front={
         <>
-          <p className="pool-portal-eyebrow">Look closely at the pool floor.</p>
-          <p className="pool-portal-support">Our name is tiled into the water. Scroll to dive in.</p>
+          <p className="pool-portal-eyebrow">Welcome to</p>
+          <p className="pool-portal-support">Hotel &amp; Suites, Ipaja Road. Scroll to step inside.</p>
         </>
       }
     >
       <div className="container-x py-10">
         <h2 className="display max-w-[16ch] text-[clamp(2.4rem,5.5vw,5rem)] text-marble">
-          Everything you came for, a short walk apart.
+          Everything a good stay needs, inside one gated compound.
         </h2>
         <p className="mt-6 max-w-[52ch] text-lg text-marble/80">
-          Place2Be is a small hotel built around its pool. The rooms are upstairs, the lounge is beside the water and the
-          bar plays music into the evening. Iyana-Ipaja is a short ride away, and the compound is big enough for everyone&apos;s car.
+          Place2Be is a hotel and suites on Ipaja Road, a short ride from Iyana-Ipaja. Comfortable rooms come first, with
+          breakfast included and a front desk that never closes. Around them you&apos;ll find a restaurant, a bar and lounge, a
+          fitness centre and an outdoor pool for guests.
         </p>
         <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-12">
           {pillars.map((p) => (

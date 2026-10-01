@@ -19,6 +19,7 @@ export function RoomGallery({ images }: { images: MediaImage[] }) {
               onClick={() => setIndex(i)}
               className="group relative block aspect-[4/3] w-full cursor-zoom-in overflow-hidden rounded-[2px]"
               aria-label={`View larger: ${img.alt}`}
+              data-cursor="View"
             >
               <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 28vw, 46vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
               <span className="absolute right-3 top-3 grid size-9 place-items-center rounded-full bg-abyss/60 text-marble opacity-0 transition-opacity group-hover:opacity-100">

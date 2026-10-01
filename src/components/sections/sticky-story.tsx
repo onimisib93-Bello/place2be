@@ -32,7 +32,7 @@ export function StickyStory({ chapters }: { chapters: StoryChapter[] }) {
   const current = chapters[active];
 
   return (
-    <section className="band-night py-20 md:py-28" aria-label="Experiences">
+    <section className="band-night py-20 md:py-28" aria-label="Hotel facilities">
       <div className="container-x grid gap-10 md:grid-cols-12">
         <div className="md:col-span-6 lg:col-span-5">
           {chapters.map((c, i) => (

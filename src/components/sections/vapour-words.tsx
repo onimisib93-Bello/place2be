@@ -34,6 +34,21 @@ export function VapourWords({
   const [width, setWidth] = useState(0);
   const family = bodoni.style.fontFamily;
   const fontReady = useFontReady(`400 100px ${family}`);
+  // Start the particle loop only once the page has settled, so it never competes with first load.
+  const [settled, setSettled] = useState(false);
+  useEffect(() => {
+    let idle = 0;
+    const t = window.setTimeout(() => {
+      const ric = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
+      if (ric) idle = ric(() => setSettled(true), { timeout: 2000 });
+      else setSettled(true);
+    }, 3200);
+    return () => {
+      window.clearTimeout(t);
+      const cic = (window as Window & { cancelIdleCallback?: (id: number) => void }).cancelIdleCallback;
+      if (idle && cic) cic(idle);
+    };
+  }, []);
 
   useEffect(() => {
     const el = ref.current;
@@ -50,7 +65,7 @@ export function VapourWords({
 
   return (
     <div ref={ref} className={cn("relative w-full", className)} style={{ height: Math.max(min, size) * 1.35 }}>
-      {reduce || !fontReady || !width ? (
+      {reduce || !fontReady || !width || !settled ? (
         <p
           className="display absolute inset-0 flex items-center"
           style={{ fontSize: size || min, color, justifyContent: alignment === "center" ? "center" : alignment === "right" ? "flex-end" : "flex-start" }}

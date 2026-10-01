@@ -8,8 +8,7 @@ import { AmenityIcon } from "./amenity-icon";
 import { cn } from "@/lib/utils";
 
 /**
- * Amenities as a tiled grid, like the pool's mosaic. Tiles light up with pool-water
- * colour on hover; the grid assembles tile by tile once, on first view.
+ * Amenities as a tiled grid. Tiles fill with night blue on hover; the grid assembles tile by tile once, on first view.
  */
 export function AmenitiesGrid({ limit, className }: { limit?: number; className?: string }) {
   const reduce = useReducedMotion();
@@ -24,7 +23,7 @@ export function AmenitiesGrid({ limit, className }: { limit?: number; className?
             lines={["Included,", "every stay."]}
           />
           <p className="max-w-md text-lg text-vein/75 md:col-span-5 md:justify-self-end">
-            Breakfast, parking and Wi-Fi cost nothing extra. The pool, the gym and the front desk are there whenever you need them.
+            Breakfast, parking and Wi-Fi cost nothing extra. The front desk, restaurant, gym and pool are there whenever you need them.
           </p>
         </div>
 

@@ -52,6 +52,7 @@ export function GalleryGrid() {
                   onClick={() => setFilmOpen(true)}
                   className="group relative block h-full min-h-72 w-full cursor-pointer overflow-hidden rounded-[2px] bg-abyss text-left"
                   aria-label="Play the 35-second hotel tour"
+                  data-cursor="Play"
                 >
                   <Image src={video.film.poster} alt="" fill sizes="(min-width: 768px) 25vw, 92vw" className="object-cover opacity-70 transition-transform duration-700 group-hover:scale-105" />
                   <span className="absolute inset-0 flex flex-col items-start justify-end gap-3 p-5 text-marble">
@@ -81,6 +82,7 @@ export function GalleryGrid() {
                       onClick={() => setIndex(i)}
                       className={cn("group relative block w-full cursor-zoom-in overflow-hidden rounded-[2px]", tall ? "h-full min-h-72" : "aspect-[4/3]")}
                       aria-label={`View larger: ${img.alt}`}
+                      data-cursor="View"
                     >
                       <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]" />
                       <span aria-hidden className="absolute inset-0 bg-abyss/0 transition-colors duration-500 group-hover:bg-abyss/25" />

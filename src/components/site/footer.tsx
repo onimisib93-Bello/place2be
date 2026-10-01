@@ -13,7 +13,7 @@ export function Footer() {
         <div className="md:col-span-5">
           <Wordmark className="text-5xl md:text-6xl" />
           <p className="mt-6 max-w-sm text-marble/70">
-            A calm hideout on Ipaja Road, with a pool, a lounge and a bed worth coming back to.
+            A hotel and suites on Ipaja Road, Lagos. Comfortable rooms, attentive staff and everything you need under one roof.
           </p>
           <div className="mt-10 max-w-sm">
             <NewsletterForm />
