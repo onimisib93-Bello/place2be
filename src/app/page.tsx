@@ -24,9 +24,9 @@ export default function HomePage() {
       <PoolPortal />
       <RoomsCarousel />
 
-      <section className="band-day border-y border-vein/10 py-8 md:py-10" aria-label="At the hotel">
+      <section className="band-day border-y border-vein/10 py-4 md:py-5" aria-label="At the hotel">
         <VelocityMarquee
-          className="display text-[clamp(2.5rem,6vw,5.5rem)] leading-none text-vein"
+          className="display text-[clamp(1.4rem,2.6vw,2.4rem)] leading-none text-vein"
           items={["Rooms & suites", "Breakfast included", "Restaurant & bar", "24-hour front desk", "Outdoor pool", "Ipaja Road, Lagos"]}
         />
       </section>

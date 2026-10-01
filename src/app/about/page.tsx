@@ -104,10 +104,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="band-night py-8 md:py-10" aria-label="At the hotel">
+      <section className="band-night py-4 md:py-5" aria-label="At the hotel">
         <VelocityMarquee
           baseVelocity={2}
-          className="display text-[clamp(2.5rem,6vw,5.5rem)] leading-none text-marble"
+          className="display text-[clamp(1.4rem,2.6vw,2.4rem)] leading-none text-marble"
           items={["Clean, always", "Help at any hour", "Room to breathe", "Ipaja Road, Lagos"]}
         />
       </section>

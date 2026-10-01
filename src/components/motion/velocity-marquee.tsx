@@ -56,8 +56,8 @@ export function VelocityMarquee({
     <span className="flex shrink-0 items-center">
       {items.map((t, i) => (
         <span key={i} className="flex items-center">
-          <span className="px-6 md:px-10">{t}</span>
-          <span aria-hidden className="block size-2 rotate-45 bg-gold md:size-2.5" />
+          <span className="px-4 md:px-7">{t}</span>
+          <span aria-hidden className="block size-1.5 rotate-45 bg-gold md:size-2" />
         </span>
       ))}
     </span>

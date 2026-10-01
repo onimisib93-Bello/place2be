@@ -60,7 +60,7 @@ function Panel({ m, index }: { m: Moment; index: number }) {
 
 /**
  * "A day at Place2Be": a pinned section where vertical scroll drives a horizontal
- * timeline from breakfast to bedtime. Touch screens get a native swipe row instead.
+ * timeline from breakfast to bedtime, on desktop and mobile alike.
  */
 export function DayAtPlace2Be() {
   const ref = useRef<HTMLElement>(null);
@@ -108,32 +108,20 @@ export function DayAtPlace2Be() {
   }
 
   return (
-    <>
-      {/* Pinned, scroll-driven on fine pointers */}
-      <section ref={ref} className="band-night relative hidden h-[420vh] [@media(pointer:fine)]:block" aria-label="A day at Place2Be">
-        <div className="sticky top-0 flex h-[100svh] flex-col justify-center overflow-hidden">
-          <motion.div ref={track} className="flex h-[72svh] w-max gap-6 pl-[max(1rem,calc((100vw-92rem)/2+3.5rem))]" style={{ x }}>
-            {intro}
-            {moments.map((m, i) => (
-              <Panel key={m.time} m={m} index={i} />
-            ))}
-          </motion.div>
-          <div className="container-x mt-8">
-            <div className="h-px w-full bg-marble/15">
-              <motion.div className="h-px origin-left bg-gold" style={{ scaleX: bar }} />
-            </div>
+    <section ref={ref} className="band-night relative h-[420vh]" aria-label="A day at Place2Be">
+      <div className="sticky top-0 flex h-[100svh] flex-col justify-center overflow-hidden">
+        <motion.div ref={track} className="flex h-[70svh] w-max gap-4 pl-4 sm:gap-6 sm:pl-[max(1rem,calc((100vw-92rem)/2+3.5rem))]" style={{ x }}>
+          {intro}
+          {moments.map((m, i) => (
+            <Panel key={m.time} m={m} index={i} />
+          ))}
+        </motion.div>
+        <div className="container-x mt-6 sm:mt-8">
+          <div className="h-px w-full bg-marble/15">
+            <motion.div className="h-px origin-left bg-gold" style={{ scaleX: bar }} />
           </div>
         </div>
-      </section>
-      {/* Native swipe row on touch */}
-      <section className="band-night py-20 [@media(pointer:fine)]:hidden" aria-label="A day at Place2Be">
-        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none]">
-          <div className="snap-start">{intro}</div>
-          {moments.map((m, i) => (
-            <div key={m.time} className="h-[68svh] snap-start"><Panel m={m} index={i} /></div>
-          ))}
-        </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
