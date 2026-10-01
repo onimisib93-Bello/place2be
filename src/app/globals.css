@@ -1,0 +1,417 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Brand palette — see design-system/MASTER.md */
+  --abyss: #071f22;
+  --abyss-2: #0c2a2e;
+  --marble: #f1f2ee;
+  --marble-2: #e4e6e0;
+  --vein: #17201e;
+  --gold: #c7a257;
+  --gold-soft: #e2cc95;
+  --pool: #3cc6d0;
+  --turf: #29402f;
+
+  /* shadcn semantic tokens */
+  --radius: 0.375rem;
+  --background: var(--marble);
+  --foreground: var(--vein);
+  --card: #ffffff;
+  --card-foreground: var(--vein);
+  --popover: #ffffff;
+  --popover-foreground: var(--vein);
+  --primary: var(--abyss);
+  --primary-foreground: var(--marble);
+  --secondary: var(--marble-2);
+  --secondary-foreground: var(--vein);
+  --muted: var(--marble-2);
+  --muted-foreground: #4f5a57;
+  --accent: var(--gold);
+  --accent-foreground: var(--abyss);
+  --destructive: #b3261e;
+  --border: #cfd3cc;
+  --input: #c4c9c1;
+  --ring: var(--pool);
+
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --color-abyss: var(--abyss);
+  --color-abyss-2: var(--abyss-2);
+  --color-marble: var(--marble);
+  --color-marble-2: var(--marble-2);
+  --color-vein: var(--vein);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-pool: var(--pool);
+  --color-turf: var(--turf);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+
+  --font-display: var(--font-bodoni), "Bodoni 72", "Didot", Georgia, serif;
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-expo: var(--ease-out-expo);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    /* clip, not hidden: keeps position:sticky and the GlyphPortal scroll root working */
+    overflow-x: clip;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  ::selection {
+    background: var(--gold);
+    color: var(--abyss);
+  }
+  :focus-visible {
+    outline: 2px solid var(--pool);
+    outline-offset: 3px;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+@layer components {
+  .display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    font-weight: 400;
+  }
+  .container-x {
+    width: 100%;
+    max-width: 92rem;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 3.5rem);
+  }
+  .band-night {
+    background: var(--abyss);
+    color: var(--marble);
+  }
+  .band-day {
+    background: var(--marble);
+    color: var(--vein);
+  }
+  /* Film grain to unify small source photos */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.16;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.45s var(--ease-out-expo);
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--abyss);
+  color: var(--marble);
+  animation: preloader-out 0.7s var(--ease-out-expo) 0.95s forwards;
+  pointer-events: none;
+}
+.no-preloader .preloader {
+  display: none;
+}
+.preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+.preloader-word {
+  display: flex;
+  overflow: hidden;
+  font-size: clamp(3rem, 10vw, 7rem);
+  line-height: 1.05;
+  padding-bottom: 0.08em;
+}
+.preloader-word > span {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: preloader-letter 0.7s var(--ease-out-expo) forwards;
+}
+.preloader-line {
+  display: block;
+  height: 1px;
+  width: min(14rem, 50vw);
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: preloader-line 0.8s var(--ease-out-expo) 0.1s forwards;
+}
+@keyframes preloader-letter {
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes preloader-line {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes preloader-out {
+  to {
+    clip-path: inset(0 0 100% 0);
+    visibility: hidden;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .preloader {
+    display: none;
+  }
+}
+
+/* GlyphPortal — Place2Be composition */
+.pool-portal [data-gp-caption] {
+  inset: calc(var(--gp-word-bottom, 50%) + 88px) 24px auto;
+  justify-content: center;
+}
+.pool-portal [data-gp-hint] {
+  display: none;
+}
+.pool-portal [data-gp-enter] {
+  min-height: 48px;
+  padding: 0 22px;
+  gap: 14px;
+  border-radius: 999px;
+  background: var(--abyss);
+  color: var(--marble);
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+}
+.pool-portal [data-gp-enter]:hover {
+  background: var(--abyss-2);
+}
+.pool-portal-eyebrow {
+  position: absolute;
+  inset: auto 24px calc(100% - var(--gp-word-top, 35%) + 28px);
+  margin: 0;
+  text-align: center;
+  color: color-mix(in oklab, var(--vein) 70%, transparent);
+  font-size: 1rem;
+}
+.pool-portal-support {
+  position: absolute;
+  inset: calc(var(--gp-word-bottom, 50%) + 28px) 24px auto;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  color: var(--vein);
+}
+.pool-portal [data-gp-content] {
+  padding-inline: 0;
+}
+
+/* CSS-driven entrance reveals (paint without waiting for hydration) */
+.reveal-line {
+  display: block;
+  transform: translateY(108%);
+  animation: reveal-line 1s var(--ease-out-expo) forwards;
+}
+@keyframes reveal-line {
+  to {
+    transform: translateY(0);
+  }
+}
+.reveal-clip {
+  clip-path: inset(14% 0 0 0);
+  animation: reveal-clip 1.4s var(--ease-out-expo) forwards;
+}
+@keyframes reveal-clip {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.fade-up {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: fade-up 0.8s var(--ease-out-expo) forwards;
+}
+@keyframes fade-up {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Entrance delays are offsets from --intro: long enough for the first-visit preloader,
+   near-zero once it has been seen (later page views). */
+:root {
+  --intro: 1s;
+}
+.no-preloader {
+  --intro: 0.4s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-line,
+  .reveal-clip,
+  .fade-up {
+    animation: none;
+    transform: none;
+    clip-path: none;
+    opacity: 1;
+  }
+}
+
+/* Decorative oversized words, drawn as generated content so they aren't read as text */
+.ghost-word::before {
+  content: attr(data-word);
+}
+
+/* Hero scroll cue: a gold bead travelling down a hairline */
+.scroll-cue {
+  animation: scroll-cue 2.2s var(--ease-out-expo) infinite;
+}
+@keyframes scroll-cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+/* Leaflet map styling */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--abyss-2) !important;
+}
+.p2b-marker {
+  position: relative;
+}
+.p2b-marker-dot,
+.p2b-marker-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+}
+.p2b-marker-dot {
+  inset: 4px;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(7, 31, 34, 0.9);
+}
+.p2b-marker-pulse {
+  background: rgba(199, 162, 87, 0.45);
+  animation: p2b-pulse 2.2s ease-out infinite;
+}
+@keyframes p2b-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+.p2b-popup .leaflet-popup-content-wrapper,
+.p2b-popup .leaflet-popup-tip {
+  background: var(--marble);
+  color: var(--vein);
+  border-radius: 6px;
+}
+.p2b-popup a {
+  color: var(--turf);
+  text-decoration: underline;
+}
+.p2b-tooltip {
+  background: var(--abyss);
+  color: var(--marble);
+  border: 0;
+}
+.leaflet-control-zoom a {
+  background: var(--abyss) !important;
+  color: var(--marble) !important;
+  border-color: rgba(241, 242, 238, 0.15) !important;
+}
+.leaflet-control-attribution {
+  background: rgba(7, 31, 34, 0.7) !important;
+  color: rgba(241, 242, 238, 0.6) !important;
+}
+.leaflet-control-attribution a {
+  color: rgba(241, 242, 238, 0.8) !important;
+}
